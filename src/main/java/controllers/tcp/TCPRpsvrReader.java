@@ -10,12 +10,12 @@ import org.slf4j.LoggerFactory;
  * Created by alexeybel on 04.10.18.
  */
 public class TCPRpsvrReader extends AbstractTcpController {
-    private Logger logger;
-    protected InputStreamReader inReader;
-    protected BufferedWriter    outWritter;
+    private     Logger logger;
+    protected   InputStreamReader inReader;
+    protected   BufferedWriter    outWritter;
 
-    public TCPRpsvrReader(String strHost, int iPort) {
-        super(strHost, iPort);
+    public TCPRpsvrReader(String strHost, int iPort,int iTimeOut) {
+        super(strHost, iPort,iTimeOut);
         logger = LoggerFactory.getLogger(TCPRpsvrReader.class);
     }
 

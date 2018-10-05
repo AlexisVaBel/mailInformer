@@ -1,5 +1,8 @@
 package mail.service;
 
+import mail.users.UserAccount;
+import message.producer.IMessagesProds;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -11,29 +14,17 @@ import java.util.Properties;
 /**
  * Created by alexeybel on 04.10.18.
  */
-public class MailRuSender implements IMailSender {
-    Session m_session = null;
-    public boolean sendMessage(String strTheme, String strMessage,String strSourcePlace, String strDistPlace) {
-        if(m_session == null) return false;
+public class MailRuSender extends AMailSender {
 
-        try {
-            Message message = new MimeMessage(m_session);
-            message.setFrom(new InternetAddress(strSourcePlace));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(strDistPlace));
-            message.setSubject(strTheme);
-            message.setText(strMessage);
-            Transport.send(message);
-            System.out.println("ok all send");
-        }catch (MessagingException e){
-            System.err.println(e.getMessage());
-            return  false;
-        }
-        return true;
+
+    public MailRuSender() {
+        System.out.println("creating mailru sender");
     }
 
-    public boolean makeSession(String username, String password) {
-        final String uname = username;
-        final String passw = password;
+    @Override
+    public boolean makeSession() {
+        final String uname = super.m_userSender.getStrUser();
+        final String passw = super.m_userSender.getStrPassword();
         Properties props = new Properties();
         props.put("mail.transport.protocol","smtp");
         props.put("mail.host","smtp.mail.ru");
@@ -48,6 +39,7 @@ public class MailRuSender implements IMailSender {
                 return new PasswordAuthentication(uname,passw);
             }
         });
-        return true;
+        return false;
     }
+
 }

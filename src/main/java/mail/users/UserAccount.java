@@ -27,7 +27,7 @@ public class UserAccount {
         return strMail;
     }
 
-    public boolean isbSender() {
+    public boolean isSender() {
         return bSender;
     }
 }

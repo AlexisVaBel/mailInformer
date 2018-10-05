@@ -12,24 +12,23 @@ import java.util.Arrays;
  */
 public class Main {
     public static void main(String[] args) {
-        AbstractTcpController rpsvr = new TCPRpsvrReader("localhost",30010);
+        AbstractTcpController rpsvr = new TCPRpsvrReader("localhost",30010,200);
         rpsvr.connect();
         rpsvr.processConditions();
         rpsvr.disconnect();
-//        UserAccount userSender   = new UserAccount("alvalbel@mail.ru","AmSaTrA1987","alvalbel@mail.ru",true);
-//        UserAccount userReceiver = new UserAccount("lebllex@gmail.com","","lebllex@gmail.com",false);
-//
-//        IMessagesProds msg       = new MessageDevicesBlocked();
-//
-//        msg.setLocation("Овсезавод");
-//        msg.setMesagesIn(Arrays.asList("114 Нория подпор","875 Шнек РКС","12 ДВУ","14 ДСУ"));
 
+//        UserAccount userSender   = new UserAccount("alvalbel@mail.ru","AmSaTrA1987","alvalbel@mail.ru",true);
+//        UserAccount userReceiver = new UserAccount("inalmi@mail.ru","","inalmi@mail.ru",false);
+//        IMessagesProds msg       = new MessageDevicesBlocked();
+//        msg.setLocation("Овсезавод рефакторинг классов");
+//        msg.setMesagesIn(Arrays.asList("114 Нория подпор","875 Шнек РКС","12 ДВУ","14 ДСУ"));
 //        try {
 //            System.out.println("mailer ready");
 //            IMailSender mailSender = (FactoryMailSenders.getInstance()).getSender("mailru");
 //            System.out.println("mailer making session");
-//            mailSender.makeSession(userSender.getStrUser(), userSender.getStrPassword());
-//            mailSender.sendMessage(msg.getLocation()+" "+msg.getTheme(),msg.getMessageFormated(), userSender.getStrMail(), userReceiver.getStrMail());
+//            mailSender.setUsersAccounts(userSender, userReceiver);
+//            if(mailSender.makeSession())
+//                mailSender.sendMessage(msg);
 //        }catch (Exception e){
 //            System.err.println(e);
 //        }

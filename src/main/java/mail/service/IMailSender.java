@@ -1,9 +1,13 @@
 package mail.service;
 
+import mail.users.UserAccount;
+import message.producer.IMessagesProds;
+
 /**
  * Created by alexeybel on 04.10.18.
  */
 public interface IMailSender {
-   boolean sendMessage(String strTheme,String strMessage,String strSourcePlace, String strDistPlace);
-   boolean makeSession(String strUsername, String strPassword);
+   boolean sendMessage(IMessagesProds msg);
+   boolean setUsersAccounts(UserAccount userSender,UserAccount userReceiver);
+   boolean makeSession();
 }

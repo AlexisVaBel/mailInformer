@@ -12,10 +12,10 @@ import java.net.Socket;
 public abstract class AbstractTcpController implements IBasicController{
     protected Socket m_socket = null;
 
-    public AbstractTcpController(String strHost, int iPort){
+    public AbstractTcpController(String strHost, int iPort,int iTimeOut){
         try {
             m_socket = new Socket();
-            m_socket.connect(new InetSocketAddress(strHost, iPort),200);
+            m_socket.connect(new InetSocketAddress(strHost, iPort),iTimeOut);
         }catch (Exception e){
             System.out.println(e);
         }
