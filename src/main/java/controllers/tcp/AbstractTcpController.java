@@ -1,6 +1,6 @@
 package controllers.tcp;
 
-import controllers.IBasicController;
+import controllers.IConditionController;
 
 import java.io.*;
 import java.net.InetSocketAddress;
@@ -9,7 +9,7 @@ import java.net.Socket;
 /**
  * Created by alexeybel on 04.10.18.
  */
-public abstract class AbstractTcpController implements IBasicController{
+public abstract class AbstractTcpController implements IConditionController {
     protected Socket m_socket = null;
 
     public AbstractTcpController(String strHost, int iPort,int iTimeOut){
@@ -20,14 +20,16 @@ public abstract class AbstractTcpController implements IBasicController{
             System.out.println(e);
         }
     }
-    void closeConnection(){
+
+    public void closeConnection(){
         try {
             m_socket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    boolean connected(){
+
+    public boolean connected(){
         if(m_socket == null) return false;
         return !(m_socket.isClosed());
     }

@@ -19,13 +19,6 @@ public class TCPRpsvrReader extends AbstractTcpController {
         logger = LoggerFactory.getLogger(TCPRpsvrReader.class);
     }
 
-    @Override
-    public boolean connect() {
-        logger.info("connect");
-        return super.connected();
-    }
-
-    @Override
     public boolean disconnect() {
         logger.info("disconnect");
         closeConnection();
@@ -38,7 +31,13 @@ public class TCPRpsvrReader extends AbstractTcpController {
     }
 
     @Override
-    public void sendInfo() {
-        logger.info("sendInfo");
+    public boolean allProcessed() {
+        return false;
+    }
+
+    @Override
+    public String getInfo() {
+        logger.info("getInfo");
+        return ";";
     }
 }

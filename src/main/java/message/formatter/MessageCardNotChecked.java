@@ -1,11 +1,11 @@
-package message.producer;
+package message.formatter;
 
 import java.util.List;
 
 /**
  * Created by alexeybel on 04.10.18.
  */
-public class MessageCardNotChecked implements IMessagesProds {
+public class MessageCardNotChecked implements IMesFormatter {
     private String strBaseMessage;
     private String strBaseTheme;
     private String strLocation;

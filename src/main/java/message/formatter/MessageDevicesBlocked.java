@@ -1,4 +1,4 @@
-package message.producer;
+package message.formatter;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by alexeybel on 04.10.18.
  */
-public class MessageDevicesBlocked implements IMessagesProds {
+public class MessageDevicesBlocked implements IMesFormatter {
     private String strBaseMessage;
     private String strBaseTheme;
     private String strLocation;

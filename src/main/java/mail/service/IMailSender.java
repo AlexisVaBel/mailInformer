@@ -1,13 +1,13 @@
 package mail.service;
 
 import mail.users.UserAccount;
-import message.producer.IMessagesProds;
+import message.formatter.IMesFormatter;
 
 /**
  * Created by alexeybel on 04.10.18.
  */
 public interface IMailSender {
-   boolean sendMessage(IMessagesProds msg);
+   boolean sendMessage(IMesFormatter msg);
    boolean setUsersAccounts(UserAccount userSender,UserAccount userReceiver);
    boolean makeSession();
 }

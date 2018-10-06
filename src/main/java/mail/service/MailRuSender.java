@@ -1,14 +1,6 @@
 package mail.service;
 
-import mail.users.UserAccount;
-import message.producer.IMessagesProds;
-
 import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Properties;
 
 /**

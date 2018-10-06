@@ -1,7 +1,7 @@
 package mail.service;
 
 import mail.users.UserAccount;
-import message.producer.IMessagesProds;
+import message.formatter.IMesFormatter;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -19,7 +19,7 @@ public abstract class AMailSender implements IMailSender{
     protected UserAccount m_userReceiver = null;
 
     @Override
-    public boolean sendMessage(IMessagesProds msg) {
+    public boolean sendMessage(IMesFormatter msg) {
         if(m_session == null) return false;
         try {
             Message message = new MimeMessage(m_session);
