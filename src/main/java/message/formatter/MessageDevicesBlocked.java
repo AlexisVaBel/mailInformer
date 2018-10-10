@@ -13,14 +13,17 @@ public class MessageDevicesBlocked implements IMesFormatter {
     private String strBaseTheme;
     private String strLocation;
 
+    public MessageDevicesBlocked(){
+        strBaseTheme = "Список заблокированных устройств:";
+    }
+
     @Override
     public void setMesageIn(String message) {
-
+        strBaseMessage = message;
     }
     @Override
     public void setMesagesIn(List<String> messages) {
         final StringBuilder strBuilder = new StringBuilder();
-        strBaseTheme = "Список заблокированных устройств:";
         messages.stream().forEach(str -> {strBuilder.append(str+"\n");});
         strBaseMessage = strBuilder.toString();
     }
