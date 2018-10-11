@@ -11,14 +11,13 @@ import java.net.Socket;
  */
 public abstract class AbstractTcpController implements IConditionController {
     protected Socket m_socket = null;
+    protected String m_strFilter =null;
 
-    public AbstractTcpController(String strHost, int iPort,int iTimeOut){
-        try {
-            m_socket = new Socket();
-            m_socket.connect(new InetSocketAddress(strHost, iPort),iTimeOut);
-        }catch (Exception e){
-            System.out.println(e);
-        }
+    public AbstractTcpController(String strHost, int iPort,int iTimeOut,String filter) throws IOException {
+        this.m_strFilter = filter;
+        m_socket = new Socket();
+        m_socket.connect(new InetSocketAddress(strHost, iPort),iTimeOut);
+
     }
 
     public void closeConnection(){

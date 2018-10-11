@@ -38,10 +38,9 @@ public class MailMsgController extends TimerTask {
             }
     }
 
-
     private void sendMessage(IMesFormatter msg){
-        if(m_mailSender.makeSession())
-            m_mailSender.sendMessage(msg);
+//        if(m_mailSender.makeSession())
+//            m_mailSender.sendMessage(msg);
     }
 
 }

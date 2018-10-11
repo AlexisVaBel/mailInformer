@@ -1,11 +1,13 @@
 import controllers.tcp.AbstractTcpController;
 import controllers.tcp.TCPRpsvrReader;
+import mail.controller.MailMsgController;
 import mail.service.FactoryMailSenders;
 import mail.service.IMailSender;
 import mail.users.UserAccount;
 import message.formatter.IMesFormatter;
 import message.formatter.MessageDevicesBlocked;
 
+import java.io.IOException;
 import java.util.Timer;
 
 /**
@@ -31,25 +33,34 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
-        AbstractTcpController rpsvr = new TCPRpsvrReader("localhost",30000,200);
-
-        Timer timer = new Timer(true);
-        // будем запускать каждых 10 секунд (10 * 1000 миллисекунд)
-//        timer.scheduleAtFixedRate(mescontr, 0, 10*1000);
+        makeUsers();
+        makeSender();
 
         try {
-            Thread.sleep(120000);
-        } catch (InterruptedException e) {
+            AbstractTcpController rpsvr = new TCPRpsvrReader("localhost",30000,200,"*");
+            MailMsgController mescontr = new MailMsgController(mailSender,rpsvr,"",10);
+            Timer timer = new Timer(true);
+            // будем запускать каждых 10 секунд (10 * 1000 миллисекунд)
+            timer.scheduleAtFixedRate(mescontr, 0, 10*1000);
+
+            try {
+                Thread.sleep(120000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            timer.cancel();
+            System.out.println("TimerTask прекращена");
+            try {
+                Thread.sleep(30000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        timer.cancel();
-        System.out.println("TimerTask прекращена");
-        try {
-            Thread.sleep(30000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
 
 //        rpsvr.closeConnection();
 
