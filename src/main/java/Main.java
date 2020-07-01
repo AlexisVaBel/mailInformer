@@ -28,7 +28,7 @@ public class Main {
     }
 
     private static void makeUsers(){
-        userSender      = new UserAccount("alvalbel@mail.ru","AmSaTrA1987","alvalbel@mail.ru",true);
+        userSender      = new UserAccount("@mail.ru","","alvalbel@mail.ru",true);
         userRecepient   = new UserAccount("inalmi@mail.ru","","inalmi@mail.ru",false);
     }
 
